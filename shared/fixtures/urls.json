@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "name": "x.com post",
+      "input": "https://x.com/foo/status/123",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "twitter.com host is normalized to x.com",
+      "input": "https://twitter.com/foo/status/123",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "www host",
+      "input": "https://www.x.com/foo/status/123",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "mobile host",
+      "input": "https://mobile.twitter.com/foo/status/123",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "query string is dropped",
+      "input": "https://x.com/foo/status/123?s=20&t=abc",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "trailing slash",
+      "input": "https://x.com/foo/status/123/",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "media suffix",
+      "input": "https://x.com/foo/status/123/video/1",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "fragment",
+      "input": "https://x.com/foo/status/123#top",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "uppercase scheme and host keep the handle as written",
+      "input": "HTTPS://X.COM/Foo/status/123",
+      "valid": true,
+      "author": "Foo",
+      "id": "123",
+      "normalized": "https://x.com/Foo/status/123"
+    },
+    {
+      "name": "http scheme",
+      "input": "http://x.com/foo/status/123",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "19-digit id",
+      "input": "https://x.com/foo/status/1234567890123456789",
+      "valid": true,
+      "author": "foo",
+      "id": "1234567890123456789",
+      "normalized": "https://x.com/foo/status/1234567890123456789"
+    },
+    {
+      "name": "15-character handle",
+      "input": "https://x.com/abcdefghijklmno/status/1",
+      "valid": true,
+      "author": "abcdefghijklmno",
+      "id": "1",
+      "normalized": "https://x.com/abcdefghijklmno/status/1"
+    },
+    {
+      "name": "handle with underscore and digit",
+      "input": "https://x.com/foo_bar9/status/1",
+      "valid": true,
+      "author": "foo_bar9",
+      "id": "1",
+      "normalized": "https://x.com/foo_bar9/status/1"
+    },
+    {
+      "name": "surrounding whitespace",
+      "input": "  https://x.com/foo/status/123  ",
+      "valid": true,
+      "author": "foo",
+      "id": "123",
+      "normalized": "https://x.com/foo/status/123"
+    },
+    {
+      "name": "profile link",
+      "input": "https://x.com/foo",
+      "valid": false
+    },
+    {
+      "name": "likes page",
+      "input": "https://x.com/foo/likes",
+      "valid": false
+    },
+    {
+      "name": "status without id",
+      "input": "https://x.com/foo/status/",
+      "valid": false
+    },
+    {
+      "name": "non-numeric id",
+      "input": "https://x.com/foo/status/abc",
+      "valid": false
+    },
+    {
+      "name": "16-character handle",
+      "input": "https://x.com/abcdefghijklmnop/status/1",
+      "valid": false
+    },
+    {
+      "name": "handle with a dash",
+      "input": "https://x.com/foo-bar/status/1",
+      "valid": false
+    },
+    {
+      "name": "lookalike: x.com as a subdomain prefix of another site",
+      "input": "https://x.com.evil.com/foo/status/1",
+      "valid": false
+    },
+    {
+      "name": "lookalike: different domain ending in x.com",
+      "input": "https://notx.com/foo/status/1",
+      "valid": false
+    },
+    {
+      "name": "another site",
+      "input": "https://example.com/foo/status/1",
+      "valid": false
+    },
+    {
+      "name": "non-http scheme",
+      "input": "ftp://x.com/foo/status/1",
+      "valid": false
+    },
+    {
+      "name": "command-line flag",
+      "input": "--exec rm -rf /",
+      "valid": false
+    },
+    {
+      "name": "i/web/status link (not supported in contract v1)",
+      "input": "https://x.com/i/web/status/123",
+      "valid": false
+    },
+    {
+      "name": "empty line",
+      "input": "",
+      "valid": false
+    }
+  ]
+}

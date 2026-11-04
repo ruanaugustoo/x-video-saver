@@ -1,0 +1,10 @@
+{
+  "name": "@x-video-saver/extension",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser extension (Manifest V3, Chrome/Edge) that saves the links of X posts with video.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

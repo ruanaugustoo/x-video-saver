@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Saved Videos</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Saved Videos <span id="count" class="count">0</span></h1>
+      <label class="switch">
+        <input type="checkbox" id="auto" />
+        <span>Auto-save</span>
+      </label>
+    </header>
+
+    <p id="empty" class="empty">
+      No video saved. Open a post with video in the X and use the <b>Save video</b> button above the player.
+    </p>
+
+    <ul id="list" class="list"></ul>
+
+    <footer id="actions">
+      <div class="row">
+        <button id="copy" class="primary" type="button">Copy urls</button>
+        <button id="download" type="button">Download .txt</button>
+        <button id="clear" class="quiet" type="button">Clean list</button>
+      </div>
+      <p class="hint">After: <code>yt-dlp -a videos-x.txt</code></p>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </footer>
+
+    <script type="module" src="../src/popup.js"></script>
+  </body>
+</html>

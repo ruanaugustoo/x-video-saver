@@ -1,0 +1,14 @@
+{
+  "list": "data/inbox/videos-x.txt",
+  "stateDir": "data/state",
+  "downloadsDir": "data/downloads",
+  "ytdlp": "yt-dlp",
+  "cookiesFromBrowser": "firefox",
+  "cookiesFile": null,
+  "delay": 2,
+  "retries": 2,
+  "backoff": 5,
+  "maxConsecutiveFailures": 3,
+  "wait": 5,
+  "limit": 25
+}

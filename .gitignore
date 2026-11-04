@@ -1,0 +1,17 @@
+# Personal data (what you save and download). Folders stay, contents do not.
+# See docs/decisions/0006-data-directory-and-file-naming.md
+data/*
+!data/*/
+data/*/*
+!data/*/.gitkeep
+
+# Local settings and credentials
+xvs.config.json
+cookies*.txt
+*.cookies
+.env
+
+# Tooling
+node_modules/
+*.zip
+.DS_Store

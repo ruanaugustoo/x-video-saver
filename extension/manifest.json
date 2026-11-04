@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "X video saver",
+  "version": "0.1.0",
+  "description": "Detects videos on X/Twitter and saves the post link to a list for later use (e.g., yt-dlp).",
+  "permissions": ["storage"],
+  "background": { "service_worker": "src/background.js", "type": "module" },
+  "action": {
+    "default_popup": "ui/popup.html",
+    "default_title": "Saved Videos"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["src/content.js"],
+      "css": ["ui/content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
