@@ -83,4 +83,4 @@ npm run check      # format check + lint + type check + tests
 
 ## License
 
-Not defined yet.
+This project is licensed under the [MIT License](LICENSE).
